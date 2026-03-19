@@ -1070,6 +1070,7 @@ canvas { display:block; cursor:crosshair; }
 </style>
 <!-- Google AdMob -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-app-pub-8846226156360659~5749710889" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@capacitor-community/admob/dist/plugin.js"></script>
 </head>
 <body>
 
@@ -4364,7 +4365,7 @@ function showInterstitialAd(callback) {
 }
 // ───────────────────────────────────────────────────────────────
 
-function triggerWin(){
+function triggerWin(){if(window.admobCounter===undefined) window.admobCounter=0; window.admobCounter++; if(window.admobCounter%3===0){ try{ const {AdMob}=Capacitor.Plugins; AdMob.showInterstitial(); }catch(e){} };
   stopTimer();
   const elapsed=Math.round((Date.now()-startTime)/1000);
   streak++; document.getElementById('streak-val').textContent=streak;
@@ -5000,7 +5001,7 @@ loadFirebaseSDK().then(()=>{
 
 // ── Tap to Start — Auto dismissed ─────────────────────────────
 (function(){
-  const ov = document.getElementById('tap-overlay');
+  const ov = document.getElementById('tap-overlay'); ov.classList.add('hide'); showScreen('home');
   if(!ov) return;
   ov.classList.add('hide');
   setTimeout(()=>{ ov.style.display='none'; }, 0);
