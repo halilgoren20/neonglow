@@ -5001,7 +5001,7 @@ loadFirebaseSDK().then(()=>{
 
 // ── Tap to Start — Auto dismissed ─────────────────────────────
 (function(){
-  const ov = document.getElementById('tap-overlay'); ov.classList.add('hide'); showScreen('home');
+  const ov = document.getElementById('tap-overlay');
   if(!ov) return;
   ov.classList.add('hide');
   setTimeout(()=>{ ov.style.display='none'; }, 0);
